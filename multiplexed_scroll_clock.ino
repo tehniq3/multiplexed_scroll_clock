@@ -268,6 +268,7 @@ void readTime()
   data[2] = 5;
   data[3] = 6;
   }
+if (data[0] == 0) data[0] = 15; // none
 }
 
 void readData()

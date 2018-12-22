@@ -10,7 +10,7 @@
 #include "RTClib.h"
 
 #define DS1307_ADDRESS 0x68  //RTC Module Address
-#define ONE_WIRE_BUS A1      //DS18B20 temperature sensor connected to analog pin 0.
+#define ONE_WIRE_BUS A0      //DS18B20 temperature sensor connected to analog pin 0.
 
 byte digits[20] = {  //Bit pattern for 7 segment display
 // -ABCDEFG            Segments labelled as per datasheet for Kingbright DA56-11EW dual common anode LED display module.

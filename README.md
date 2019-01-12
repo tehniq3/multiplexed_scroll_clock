@@ -21,6 +21,8 @@ History:
 
 
 https://nicuflorica.blogspot.com/2018/12/ceas-animat-termometru-cu-higrometru-si.html
+
+https://nicuflorica.blogspot.com/2019/01/ceas-reglabil-animat-cu-termometru-si.html
 ![test1](https://4.bp.blogspot.com/-44S8HjtziB0/XB4CPBthZ1I/AAAAAAAAYPY/W5soKjo1qN4eAvtL6EEJh46zyLxO9OVvwCLcBGAs/s320/teste_0.jpg)
 
 https://nicuflorica.blogspot.com/2018/12/ceas-animat-cu-termometru-si-higrometru.html

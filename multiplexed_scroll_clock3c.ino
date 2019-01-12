@@ -274,6 +274,7 @@ DateTime now = ds1307.now();
   zi = now.day();
   ora = now.hour();
   minut = now.minute();
+  pm = 0;
   meniu = 2;  // go to adjusting mode
 } // end read data and clock
 

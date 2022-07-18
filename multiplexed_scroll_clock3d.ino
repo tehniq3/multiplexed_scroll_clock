@@ -3,13 +3,13 @@
 // adapted by Nicu FLORICA (niq_ro) - https://nicuflorica.blogspot.com/
 // ver.0 - test or real (DS18B20 & RTC 0 DS1307 / DS3231), common cathode or common anode
 // 21.12.2018 - Craiova
-// ver.1 - similar, changed DS18B20 with DHT(22, 11, etc)
-// ver.2 - added control for brighness using variable
-// ver.2b - added control thru pin (from minim to maximum for use photoresisor / switch)
-// ver.3 - added adjust for clock and data (26.12.2018)
+// ver.1 - similar, change DS18B20 with DHT(22, 11, etc)
+// ver.2 - add control for brighness using variable
+// ver.2b - add control thru pin (from minim to maximum for use photoresisor / switch)
+// ver.3 - add adjust for clock and data (26.12.2018)
 // ver.3a - for night put just clock and temperature information
 // ver.3b - hour in 12h format instead 24h
-// ver.3c - added led dp at last digit for AM/PM
+// ver.3c - add led dp at last digit for AM/PM
 // ver.3d - added year on display (18.02.2022)
 
 #include <Wire.h>  //Included with Arduino IDE
@@ -266,13 +266,14 @@ lumina = 3*analogRead(senzorlumina);  // for control the brigntness
   }
   }
   scrollOut(data);
+} // end meniu = 0 - normal state
 
 if ((meniu == 0) and (lumina < luminamin)) // normal state
 { 
 readData2();  // read data
 lumina = 3*analogRead(senzorlumina);  // for control the brigntness
    scrollIn(data);
-   starttime = millis();                   
+    starttime = millis();                   
   endtime = starttime;                    //Store the internal timer counter value to make this loop run for a set period.  
   while ((endtime - starttime) <=2500) // do this loop for 5000mS
   {  
@@ -285,8 +286,6 @@ lumina = 3*analogRead(senzorlumina);  // for control the brigntness
   }
   }
   scrollOut(data);
-}
-  
 } // end meniu = 0 - normal state
 
 if (meniu == 1)  // read clock and data
@@ -689,7 +688,7 @@ void readData2()
  // rtc[1] = now.month();
  // rtc[2] = now.day();
   rtc[0] = now.year();
-  rtc[0] = rtc[0] - 2000;
+//  rtc[0] = rtc[0] - 2000;
   data[0] = 2;
   data[1] = 0;
   data[2] = (rtc[0] / 10);
@@ -703,9 +702,6 @@ void readData2()
   data[3] = 2;
   }
 }
-
-
-
 
 void scrollIn(int sDig[4])    //Scrolls data on to the display from blank.
 {
@@ -759,7 +755,7 @@ void outputDisplay1(int dig[4], float dilei)        //Scan the display once with
   {
   outputDigit(dig[d]);                //Set up the segment pins with the correct data.
  
-    if ((d == 3) and (pm == 1))
+    if ((d ==3) and (pm == 1))
    {
   if (tip == 1) digitalWrite(cathodes[7], 0);
   else digitalWrite(cathodes[7], 1); 

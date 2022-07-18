@@ -10,7 +10,6 @@
 // ver.3a - for night put just clock and temperature information
 // ver.3b - hour in 12h format instead 24h
 // ver.3c - add led dp at last digit for AM/PM
-// ver.3d - added year on display (18.02.2022)
 
 #include <Wire.h>  //Included with Arduino IDE
 #include "DHT.h"     // DHT library - https://github.com/adafruit/DHT-sensor-library
@@ -259,26 +258,6 @@ lumina = 3*analogRead(senzorlumina);  // for control the brigntness
   {  
   pm = 0;            
   outputDisplay3(data, lumina); //Send to diaplay.
-  endtime = millis();                  //Read internal timer counter to see how long this loop has been running.
-  if (!(digitalRead(SW0)))
-  {
-    meniu = 1; //go to menu for change hour
-  }
-  }
-  scrollOut(data);
-} // end meniu = 0 - normal state
-
-if ((meniu == 0) and (lumina < luminamin)) // normal state
-{ 
-readData2();  // read data
-lumina = 3*analogRead(senzorlumina);  // for control the brigntness
-   scrollIn(data);
-    starttime = millis();                   
-  endtime = starttime;                    //Store the internal timer counter value to make this loop run for a set period.  
-  while ((endtime - starttime) <=2500) // do this loop for 5000mS
-  {  
-  pm = 0;            
-  outputDisplay1(data, lumina); //Send to diaplay.
   endtime = millis();                  //Read internal timer counter to see how long this loop has been running.
   if (!(digitalRead(SW0)))
   {
@@ -680,28 +659,6 @@ void readData()
   }
 }
 
-void readData2()
-{
-  if (test == 0)  // real
-  {
-  DateTime now = ds1307.now();
- // rtc[1] = now.month();
- // rtc[2] = now.day();
-  rtc[0] = now.year();
-//  rtc[0] = rtc[0] - 2000;
-  data[0] = 2;
-  data[1] = 0;
-  data[2] = (rtc[0] / 10);
-  data[3] = (rtc[0] % 10);
-  }
-  else
-  {
-  data[0] = 2;
-  data[1] = 3;
-  data[2] = 1;
-  data[3] = 2;
-  }
-}
 
 void scrollIn(int sDig[4])    //Scrolls data on to the display from blank.
 {
